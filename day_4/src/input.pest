@@ -1,0 +1,11 @@
+WHITESPACE = _{ " " }
+id = @{ ASCII_DIGIT+ }
+pre_number = @{ ASCII_DIGIT+ }
+post_number = @{ ASCII_DIGIT+ }
+start = _{ "Card " ~ id ~ ": " }
+split = { "|" }
+
+complete = {start ~ pre_number+ ~ split ~ post_number+}
+
+
+
