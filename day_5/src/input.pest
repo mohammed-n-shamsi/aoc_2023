@@ -1,0 +1,43 @@
+WHITESPACE = _{ " " }
+
+dst_range_start = @{ ASCII_DIGIT+ }
+src_range_start = @{ ASCII_DIGIT+ }
+range_len       = @{ ASCII_DIGIT+ }
+
+range = { dst_range_start ~ src_range_start ~ range_len ~ NEWLINE* }
+
+seed  = @{ ASCII_DIGIT+ }
+seeds = _{ "seeds:" ~ seed+ ~ NEWLINE*}
+
+seed_soil_map = 
+{ "seed-to-soil map:" ~ NEWLINE ~ range+ }
+
+soil_fert_map = 
+{ "soil-to-fertilizer map:" ~ NEWLINE ~ range+ }
+
+fert_water_map = 
+{ "fertilizer-to-water map:" ~ NEWLINE ~ range+ }
+
+water_light_map = 
+{ "water-to-light map:" ~ NEWLINE ~ range+ }
+
+light_temp_map =
+{ "light-to-temperature map:" ~ NEWLINE ~ range+ }
+
+temp_humidity_map =
+{ "temperature-to-humidity map:" ~ NEWLINE ~ range+ }
+
+humidity_location_map =
+{ "humidity-to-location map:" ~ NEWLINE ~ range+ }
+
+grammar = 
+_{ seeds ~ 
+seed_soil_map ~
+soil_fert_map ~
+fert_water_map ~
+water_light_map ~
+light_temp_map ~
+temp_humidity_map ~
+humidity_location_map
+}
+
