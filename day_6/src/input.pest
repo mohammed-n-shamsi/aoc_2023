@@ -1,0 +1,9 @@
+WHITESPACE = _{ " " }
+
+time = @{ ASCII_DIGIT+ }
+distance = @{ ASCII_DIGIT+ }
+times = _{"Time:" ~ time+ }
+distances = _{"Distance:" ~ distance+}
+
+grammar = 
+_{ times ~ NEWLINE* ~ distances }
